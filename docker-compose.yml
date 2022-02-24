@@ -7,3 +7,16 @@ services:
       - "./html:/var/www/html:cached"
     ports:
       - "8090:80"
+
+  ddos:
+    image: ibmcom/curl:4.0.0
+    entrypoint: "/ddos-attacke.sh"
+    links:
+      - web
+    environment:
+      WEBHOST: 'web'
+      WEBPORT: '80'
+    command:
+      - '3'
+    volumes:
+      - './ddos-attacke.sh:/ddos-attacke.sh'
