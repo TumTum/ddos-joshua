@@ -1,0 +1,92 @@
+{% extends "base.twig" %}
+
+{% block content %}
+    {% if start %}
+        <blockquote>
+            Heute stelle ich vor wie eine DDoS-Attacke diese Webseite. Lahm legt.
+        </blockquote>
+
+        <h3>Services</h3>
+        <p>Besteht aus folgende Komponenten</p>
+        <ol>
+            <li><strong>Web Server:</strong> Apache</li>
+            <li><strong>Programmier Sprache der Seite:</strong> PHP</li>
+            <li>
+                <strong>DDoS-Attacke:</strong>
+                <ol>
+                    <li>In dem man Username/Passwort Formular abschickt</li>
+                    <li>Durch die Prüfung von Username und Passwort. Muss der Server die Datenbank abfragen
+                        und schauen ob es A. den User gibt. B. das Passwort übereinstimmt.
+                    </li>
+
+                    <li>Ist die Abfrage zu oft hintereinader. Wird das system lahm.</li>
+                </ol>
+            </li>
+        </ol>
+
+        <blockquote>Da schaut mal was Amazon alles an Rechen Power hat um die DDoS abzuwähren. <br />
+            Aber auch halb Deutschland reinzulassen.
+        </blockquote>
+
+    {% endif %}
+
+    <form class="box" action="/" method="get">
+
+        {% if success %}
+            <article class="message is-success">
+                <div class="message-header">
+                    <p>Erfolgreich</p>
+                </div>
+                <div class="message-body">
+                    Passwort und Username sind richtig
+                </div>
+            </article>
+        {% endif %}
+        {% if error %}
+            <article class="message is-danger">
+                <div class="message-header">
+                    <p>Error</p>
+                </div>
+                <div class="message-body">
+                    Passwort oder Username sind falsch
+                </div>
+            </article>
+        {% endif %}
+
+        <div class="field">
+            <label class="label">Benutzername</label>
+            <div class="control">
+                <input class="input" type="text" name="user" placeholder="">
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Password</label>
+            <div class="control">
+                <input class="input" type="password" name="pwd" placeholder="********">
+            </div>
+        </div>
+
+        {% if captcha %}
+            <div class="block">
+                <input type="hidden" name="foo[id]" value="{{ captcha_id }}">
+                <pre>{{ captcha_word|raw }}</pre>
+                <div class="field">
+                    <label class="label">Captcha</label>
+                    <div class="control">
+                        <input class="input" type="text" name="foo[input]" placeholder="Captcha">
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        <button class="button is-primary">Einlogen</button>
+
+
+    </form>
+
+{#    <div class="block">#}
+{#        {% include "switchCaptcha.twig" %}#}
+{#    </div>#}
+
+{% endblock %}

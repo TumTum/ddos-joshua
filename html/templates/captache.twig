@@ -1,0 +1,23 @@
+{% extends "base.twig" %}
+
+{% block content %}
+    {% if success %}
+        <article class="message is-success">
+            <div class="message-body">
+                ist an geschaltet
+            </div>
+        </article>
+    {% endif %}
+
+    {% if error %}
+        <article class="message is-danger">
+            <div class="message-body">
+                ist aus geschaltet
+            </div>
+        </article>
+    {% endif %}
+
+
+    <a class="button is-small " href="/?clean">Zurück</a>
+
+{% endblock %}

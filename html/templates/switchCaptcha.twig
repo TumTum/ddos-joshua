@@ -1,0 +1,9 @@
+<h5>DDoS Schutz</h5>
+Einen Captch aktivieren
+<form action="/" method="post">
+    <input type="hidden" name="fun" value="captchatoggle">
+    <div class="buttons has-addons">
+        <button class="button is-small {% if captcha == false %}is-danger{% endif %}" name="captcha" value="off">Aus</button>
+        <button class="button is-small {% if captcha %}is-success{% endif %}" name="captcha" value="on">An</button>
+    </div>
+</form>
