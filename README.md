@@ -17,4 +17,5 @@ Server starten:
 Attacke Starten:
 ----------------
 
-- PowserShell: `./ddos-attacke.sh`
+- PowserShell: `./ddos-attacke.sh [Integer: Anzahl der griffe] `
+- Beispiel: `./ddos-attacke.sh 1000 `
